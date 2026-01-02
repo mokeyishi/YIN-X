@@ -3,9 +3,15 @@ import Navbar from './components/Navbar';
 import ToolsPage from './pages/ToolsPage';
 import AboutPage from './pages/AboutPage';
 import ArticlesPage from './pages/ArticlesPage';
+import ArticleDetailPage from './pages/ArticleDetailPage';
 
 const App: React.FC = () => {
-  const [currentPath, setCurrentPath] = useState('/');
+  // 核心修复：初始化时直接从 Hash 获取当前路径，避免默认渲染 '/' 导致的刷新闪烁
+  const [currentPath, setCurrentPath] = useState(() => {
+    const initialHash = window.location.hash.replace('#', '');
+    return initialHash || '/';
+  });
+  
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -16,7 +22,6 @@ const App: React.FC = () => {
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
 
     if (isDark) {
       document.documentElement.classList.add('dark');
@@ -34,17 +39,19 @@ const App: React.FC = () => {
   };
 
   const renderPage = () => {
-    switch (currentPath) {
-      case '/':
-      case '/tools':
-        return <ToolsPage />;
-      case '/articles':
-        return <ArticlesPage />;
-      case '/about':
-        return <AboutPage />;
-      default:
-        return <ToolsPage />;
+    // 精确匹配路径
+    if (currentPath === '/' || currentPath === '/tools') return <ToolsPage />;
+    if (currentPath === '/articles') return <ArticlesPage onNavigate={navigate} />;
+    if (currentPath === '/about') return <AboutPage />;
+
+    // 动态文章详情路径
+    if (currentPath.startsWith('article/')) {
+      const articleId = currentPath.split('/')[1];
+      return <ArticleDetailPage articleId={articleId} onBack={() => navigate('/articles')} />;
     }
+
+    // 默认兜底
+    return <ToolsPage />;
   };
 
   return (
@@ -88,13 +95,13 @@ const App: React.FC = () => {
               <span className="text-xl">✨</span> YIN-X
             </div>
             <div className="text-slate-500 dark:text-slate-500 text-sm">
-              专注高效办公与数字化工具分享。
+              专注高效办公与数字化教程分享。
             </div>
           </div>
           
           <div className="flex items-center gap-10 text-sm font-semibold text-slate-500 dark:text-slate-400">
             <button onClick={() => navigate('/')} className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">工具导航</button>
-            <button onClick={() => navigate('/articles')} className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">精选文章</button>
+            <button onClick={() => navigate('/articles')} className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">教程文章</button>
             <button onClick={() => navigate('/about')} className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">关于作者</button>
           </div>
           

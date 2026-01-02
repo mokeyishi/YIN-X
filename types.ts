@@ -7,6 +7,8 @@ export interface Tool {
   bannerColor: string;
   tags: string[];
   link: string;
+  poster?: string;
+  isPinned?: boolean; // 新增：置顶标识
 }
 
 export interface Category {
@@ -25,7 +27,10 @@ export interface Article {
   id: string;
   title: string;
   excerpt: string;
+  content: string;
   date: string;
   category: string;
+  tags: string[];
   link: string;
+  isPinned?: boolean; // 新增：置顶标识
 }

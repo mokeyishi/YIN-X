@@ -1,3 +1,4 @@
+
 import { Tool, Category, NavItem, Article } from './types';
 
 export const CATEGORIES: Category[] = [
@@ -18,7 +19,9 @@ export const TOOLS: Tool[] = [
     icon: '📱',
     bannerColor: 'bg-purple-500/10 dark:bg-purple-600',
     tags: ['开源', '批量', '无损'],
-    link: 'https://example.com/heic'
+    link: 'https://example.com/heic',
+    poster: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800',
+    isPinned: true
   },
   {
     id: '2',
@@ -38,37 +41,8 @@ export const TOOLS: Tool[] = [
     icon: '📝',
     bannerColor: 'bg-indigo-500/10 dark:bg-indigo-600',
     tags: ['PDF', '打印', '自定义'],
-    link: 'https://example.com/practice'
-  },
-  {
-    id: '4',
-    title: 'PDF 属性修改器',
-    description: '在线修改 PDF 的元数据信息，包括标题、作者、主题、关键词等信息。',
-    category: 'docs',
-    icon: '📄',
-    bannerColor: 'bg-pink-500/10 dark:bg-pink-600',
-    tags: ['PDF', '工具', '隐私'],
-    link: 'https://example.com/pdf'
-  },
-  {
-    id: '5',
-    title: '全屏极简倒计时',
-    description: '一个极简风格的全屏倒计时工具。支持自定义时长、静音提醒，适合专注工作。',
-    category: 'efficiency',
-    icon: '⏱️',
-    bannerColor: 'bg-rose-500/10 dark:bg-rose-500',
-    tags: ['专注', '全屏', '极简'],
-    link: 'https://example.com/timer'
-  },
-  {
-    id: '6',
-    title: '在线智能提词器',
-    description: '专业视频创作者必备。支持自动滚动、字体调整、镜像翻转，适配多种设备。',
-    category: 'efficiency',
-    icon: '📺',
-    bannerColor: 'bg-blue-500/10 dark:bg-blue-600',
-    tags: ['视频', '录制', '智能'],
-    link: 'https://example.com/prompt'
+    link: 'https://example.com/practice',
+    poster: 'https://images.unsplash.com/photo-1503551723145-6c040742065b?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
@@ -77,31 +51,68 @@ export const ARTICLES: Article[] = [
     id: '1',
     title: '如何利用 AI 提升 10 倍开发效率',
     excerpt: '在 AI 时代，开发者的角色正在发生深刻变化。本文将探讨如何将 Cursor、Copilot 等工具融入日常工作流。',
+    content: `## 为什么 AI 是开发者的必修课\n\n在过去的一年里，大语言模型（LLM）彻底改变了编写代码的方式。\n\n### 核心技巧：\n1. **提示词工程 (Prompt Engineering)**\n2. **原子化提交**\n3. **代码审查**`,
     date: '2024-10-20',
     category: 'AI 实践',
-    link: '#'
+    tags: ['AI', 'Cursor', '开发效率'],
+    link: '#article/1',
+    isPinned: true
   },
   {
     id: '2',
     title: '2024 年前端技术趋势观察',
     excerpt: '从 React 19 到服务端组件，前端生态正经历新一轮洗牌。我们需要关注哪些核心技术？',
+    content: `## 前端开发的下一站\n\nReact 19 的发布带来了很多令人兴奋的特性。`,
     date: '2024-09-15',
     category: '技术趋势',
-    link: '#'
+    tags: ['React', '前端', '2024'],
+    link: '#article/2'
   },
   {
     id: '3',
-    title: '高效工作流：Prompt Engineering 实战',
-    excerpt: '掌握如何编写高质量的提示词，是与 AI 协作的核心能力。',
-    date: '2024-08-01',
-    category: '提示词工程',
-    link: '#'
+    title: '数字化转型的个人实践：从碎片到系统',
+    excerpt: '在这个信息爆炸的时代，如何通过工具构建个人知识库？本文分享我的数字化工作流。',
+    content: `## 信息获取与沉淀\n\n建立一个高效的工作流，第一步是过滤信息。`,
+    date: '2024-08-10',
+    category: '效率提升',
+    tags: ['效率', '工作流', 'Notion'],
+    link: '#article/3'
+  },
+  {
+    id: '4',
+    title: '深度工作：夺回你的专注力',
+    excerpt: '为什么你总是感到忙碌却无所作为？探索深度工作背后的生理与心理学基础。',
+    content: `## 专注的力量\n\n在各种通知弹窗的干扰下，保持专注已成为一种奢侈。`,
+    date: '2024-07-22',
+    category: '认知升级',
+    tags: ['心理学', '专注', '效率'],
+    link: '#article/4'
+  },
+  {
+    id: '5',
+    title: '2025 年设计审美趋势预判',
+    excerpt: '从扁平化到拟态，再到现在的 Bento Grid 与极简主义，审美是如何轮回的？',
+    content: `## 设计的未来\n\n随着屏显技术的进步，我们将看到更多微动效和复杂光影在 Web 端应用。`,
+    date: '2024-06-05',
+    category: '设计趋势',
+    tags: ['设计', 'UI/UX', '审美'],
+    link: '#article/5'
+  },
+  {
+    id: '6',
+    title: '测试分页：这是第 6 篇文章',
+    excerpt: '当你看到这篇文章时，说明分页功能已经生效，它应该出现在第二页。',
+    content: `## 分页测试内容\n\n为了演示“超过 5 篇自动分页”，我们添加了这篇测试文章。`,
+    date: '2024-05-10',
+    category: '系统测试',
+    tags: ['分页', '测试'],
+    link: '#article/6'
   }
 ];
 
 export const NAV_ITEMS: NavItem[] = [
   { label: '首页', path: '/' },
-  { label: '精选文章', path: '/articles' },
+  { label: '教程文章', path: '/articles' },
   { label: '关于我', path: '/about' },
 ];
 
