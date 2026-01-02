@@ -36,7 +36,7 @@ const AboutPage: React.FC = () => {
           </div>
           <div className="space-y-6 text-slate-600 dark:text-slate-300 leading-relaxed text-lg transition-colors">
             <p className="font-medium">
-              并没有，<span className="text-purple-600 dark:text-purple-400 font-bold">什么</span>很特别的
+              并没有什么很特别的
             </p>
           </div>
         </section>
