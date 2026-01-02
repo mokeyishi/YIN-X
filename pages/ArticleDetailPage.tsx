@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ARTICLES } from '../constants';
 
@@ -101,7 +102,7 @@ const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ articleId, onBack
             {article.content.split('\n').map((line, i) => {
               if (line.startsWith('## ')) {
                 return <h2 key={i} className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-12 mb-6 tracking-tight flex items-center gap-3">
-                  <span className="w-1.5 h-8 bg-purple-50 rounded-full inline-block"></span>
+                  <span className="w-1.5 h-8 bg-purple-600/40 rounded-full inline-block"></span>
                   {parseInlineMarkdown(line.replace('## ', '').trim())}
                 </h2>;
               }
@@ -115,7 +116,7 @@ const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ articleId, onBack
                   {parseInlineMarkdown(line.replace('- ', '').trim())}
                 </li>;
               }
-              if (line.startsWith('1. ') || line.startsWith('2. ')) {
+              if (line.startsWith('1. ') || line.startsWith('2. ') || line.startsWith('3. ')) {
                  return <p key={i} className="ml-2 mb-3 font-medium text-slate-800 dark:text-slate-200">
                   {parseInlineMarkdown(line)}
                  </p>;

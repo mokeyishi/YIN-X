@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { ARTICLES } from '../constants';
 
@@ -6,12 +7,10 @@ interface ArticlesPageProps {
 }
 
 const ArticlesPage: React.FC<ArticlesPageProps> = ({ onNavigate }) => {
-  // 核心变更：将 selectedTag 改为 selectedCategory
   const [selectedCategory, setSelectedCategory] = useState<string>('全部');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; 
 
-  // 1. 动态提取所有文章中的有效“分类 (Category)”
   const allCategories = useMemo(() => {
     const categories = new Set<string>();
     categories.add('全部');
@@ -21,14 +20,12 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({ onNavigate }) => {
     return Array.from(categories);
   }, []);
 
-  // 2. 如果当前选中的分类在数据源中已不存在，自动重置为“全部”
   useEffect(() => {
     if (!allCategories.includes(selectedCategory)) {
       setSelectedCategory('全部');
     }
   }, [allCategories, selectedCategory]);
 
-  // 3. 过滤并排序（基于 Category 过滤）
   const filteredAndSortedArticles = useMemo(() => {
     const filtered = selectedCategory === '全部' 
       ? ARTICLES 
@@ -41,7 +38,6 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({ onNavigate }) => {
     });
   }, [selectedCategory]);
 
-  // 切换分类时重置页码
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory]);
@@ -61,7 +57,7 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({ onNavigate }) => {
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-4">
           <span className="w-12 h-1 bg-purple-600 rounded-full"></span>
-          <span className="text-purple-600 font-black tracking-widest text-xs uppercase">Instructional Guides</span>
+          <span className="text-purple-600 font-black tracking-widest text-xs uppercase text-opacity-80">Instructional Guides</span>
         </div>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tight">教程文章</h2>
@@ -70,7 +66,6 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({ onNavigate }) => {
           </div>
         </div>
         
-        {/* 分类过滤栏 */}
         <div className="flex flex-wrap gap-3 pb-4">
           {allCategories.map(cat => (
             <button
@@ -104,23 +99,20 @@ const ArticlesPage: React.FC<ArticlesPageProps> = ({ onNavigate }) => {
                 : 'border-slate-200 dark:border-slate-800 hover:border-purple-500/50'
             }`}
           >
+            {/* 极小呼吸点 - 置顶标识 */}
             {article.isPinned && (
-              <div className="absolute top-0 right-0">
-                <div className="bg-purple-600 text-white text-[9px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-bl-xl shadow-lg flex items-center gap-1.5">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-                  </svg>
-                  Pinned
-                </div>
+              <div className="absolute top-6 right-6 z-30 flex items-center justify-center">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-purple-600 shadow-[0_0_8px_rgba(168,85,247,0.8)] animate-pulse"></span>
+                </span>
               </div>
             )}
 
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 bg-purple-600/10 text-purple-600 dark:text-purple-400 text-[10px] font-black uppercase tracking-widest rounded-lg">
-                  {article.category}
-                </span>
                 <div className="flex gap-1.5">
+                  <span className="text-[10px] text-purple-600 dark:text-purple-400 font-black uppercase tracking-widest">{article.category}</span>
                   {article.tags.map(tag => (
                     <span key={tag} className="text-[10px] text-slate-400 font-medium">#{tag}</span>
                   ))}

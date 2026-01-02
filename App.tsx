@@ -191,7 +191,7 @@ const App: React.FC = () => {
               <span className="text-xl">✨</span> YIN-X
             </div>
             <div className="text-slate-500 dark:text-slate-500 text-sm">
-              个人导航页。
+              专注高效办公与数字化教程分享。
             </div>
           </div>
           

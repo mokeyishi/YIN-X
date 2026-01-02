@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Tool } from '../types';
 
@@ -19,13 +20,13 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           : 'border-slate-200 dark:border-slate-800 hover:border-purple-500/60'
       }`}
     >
-      {/* 置顶勋章 */}
+      {/* 极小呼吸点 - 一闪一闪设计 */}
       {tool.isPinned && (
-        <div className="absolute top-4 right-4 z-30 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-tighter flex items-center gap-1 shadow-lg animate-pulse">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-          </svg>
-          Pinned
+        <div className="absolute top-4 right-4 z-30 flex items-center justify-center">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-purple-600 shadow-[0_0_8px_rgba(168,85,247,0.8)] animate-pulse"></span>
+          </span>
         </div>
       )}
 
@@ -37,29 +38,14 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-30"></div>
-        
-        <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1.5 bg-black/50 backdrop-blur-md rounded-lg text-[10px] font-black text-white uppercase tracking-widest border border-white/10 group-hover:bg-purple-600 transition-colors duration-300">
-          <span className="opacity-80">
-            {tool.category === 'efficiency' ? '⚡' : 
-             tool.category === 'image' ? '🎨' :
-             tool.category === 'learning' ? '🎓' : 
-             tool.category === 'docs' ? '📄' : '🛠️'}
-          </span>
-          {tool.category === 'efficiency' ? '效率' : 
-           tool.category === 'image' ? '图像' :
-           tool.category === 'learning' ? '学习' : 
-           tool.category === 'docs' ? '文档' : '开发'}
-        </div>
       </div>
 
       <div className="p-6 flex flex-col flex-1 relative z-10 bg-white dark:bg-slate-900 transition-colors duration-500">
-        <div className="flex items-start justify-between mb-2">
+        <div className="mb-2">
+          {/* 标题 - 纯文字，无图标 */}
           <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
             {tool.title}
           </h3>
-          <span className="text-xl grayscale group-hover:grayscale-0 transition-all duration-300">
-            {tool.icon}
-          </span>
         </div>
         
         <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-5 line-clamp-2">
