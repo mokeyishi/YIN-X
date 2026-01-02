@@ -4,7 +4,7 @@ export interface Tool {
   title: string;
   description: string;
   category: string;
-  icon: string;
+  icon: string; // 支持 Emoji 或 图片 URL
   bannerColor: string;
   tags: string[];
   link: string;
@@ -22,7 +22,7 @@ export interface NavItem {
   isButton?: boolean;
 }
 
-// Added Article interface to match usage in ArticlesPage.tsx
+// Added Article interface to fix import error in ArticlesPage.tsx
 export interface Article {
   id: string;
   title: string;

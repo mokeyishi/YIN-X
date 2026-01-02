@@ -7,6 +7,9 @@ interface ToolCardProps {
 }
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
+  // 判断 icon 是否为图片 URL
+  const isImageUrl = tool.icon.startsWith('http') || tool.icon.startsWith('/') || tool.icon.includes('.');
+
   return (
     <a 
       href={tool.link}
@@ -14,10 +17,14 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
       rel="noopener noreferrer"
       className="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 group hover:border-purple-500/50 transition-all duration-500 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex flex-col h-full cursor-pointer block"
     >
-      {/* 海报区域 - 保持放大动效 */}
-      <div className={`h-48 flex items-center justify-center text-6xl relative shrink-0 overflow-hidden ${tool.bannerColor} transition-colors duration-500`}>
-        <div className="z-10 transform group-hover:scale-125 transition-transform duration-700 ease-out">
-          {tool.icon}
+      {/* 海报区域 */}
+      <div className={`h-48 flex items-center justify-center relative shrink-0 overflow-hidden ${tool.bannerColor} transition-colors duration-500`}>
+        <div className="z-10 transform group-hover:scale-110 transition-transform duration-700 ease-out flex items-center justify-center w-full h-full p-8">
+          {isImageUrl ? (
+            <img src={tool.icon} alt={tool.title} className="max-w-full max-h-full object-contain drop-shadow-md" />
+          ) : (
+            <span className="text-7xl">{tool.icon}</span>
+          )}
         </div>
         
         {/* 分类小标签 */}
@@ -38,7 +45,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
           {tool.description}
         </p>
 
-        {/* 标签展示 - 已移除 group-hover 反应 */}
+        {/* 标签展示 */}
         <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {tool.tags.map((tag, index) => (
             <span 

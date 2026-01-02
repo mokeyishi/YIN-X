@@ -73,6 +73,26 @@ export const TOOLS: Tool[] = [
   }
 ];
 
+// Added ARTICLES array to fix missing export error in ArticlesPage.tsx
+export const ARTICLES: Article[] = [
+  {
+    id: '1',
+    title: '我是如何利用 AI 让开发效率提升 10 倍的',
+    excerpt: '在这个 AI 爆发的时代，开发者该如何保持核心竞争力？分享我日常工作中的 AI 工作流与实战技巧。',
+    category: 'AI 经验',
+    date: '2024-10-15',
+    link: 'https://example.com/article/ai-workflow'
+  },
+  {
+    id: '2',
+    title: '从零开始：构建你的个人高效数字化工具库',
+    excerpt: '好的工具不仅能提高效率，更能改变工作习惯。为你精选 20 个不容错过的生产力工具。',
+    category: '工具推荐',
+    date: '2024-09-28',
+    link: 'https://example.com/article/tools-library'
+  }
+];
+
 export const NAV_ITEMS: NavItem[] = [
   { label: '首页', path: '/' },
   { label: '精选文章', path: '/articles' },
@@ -82,32 +102,4 @@ export const NAV_ITEMS: NavItem[] = [
 export const SKILLS = [
   'Cursor AI', 'GitHub Copilot', 'Claude', '提示词工程', 'Next.js', 'React',
   'TypeScript', 'Node.js', 'Python', 'AI 辅助开发', '代码审计', '性能优化'
-];
-
-// Added ARTICLES export to fix the error in ArticlesPage.tsx
-export const ARTICLES: Article[] = [
-  {
-    id: '1',
-    title: '为什么说 2025 年是 AI 开发的元年？',
-    excerpt: '探讨大模型如何彻底改变我们的编程习惯与开发流程，以及如何在这场浪潮中保持竞争力。',
-    category: 'AI 趋势',
-    date: '2025-01-20',
-    link: '#'
-  },
-  {
-    id: '2',
-    title: '提示词工程：从入门到进阶的完整指南',
-    excerpt: '一套系统化的 Prompt Engineering 方法论，帮助你从零开始掌握与 AI 沟通的艺术。',
-    category: '技术深度',
-    date: '2025-01-15',
-    link: '#'
-  },
-  {
-    id: '3',
-    title: 'Cursor AI 与开发者的 10 倍效率之路',
-    excerpt: '深入剖析如何深度利用 Cursor 的 AI 能力，将编码速度提升一个量级。',
-    category: '工具评测',
-    date: '2025-01-10',
-    link: '#'
-  }
 ];
