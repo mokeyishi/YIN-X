@@ -12,6 +12,18 @@
           extend: {
             transitionProperty: {
               'colors': 'background-color, border-color, color, fill, stroke, box-shadow',
+            },
+            colors: {
+              // 将 purple 重定向到 CSS 变量，这样所有现有的 purple 样式都会动态改变
+              purple: {
+                50: 'var(--brand-50)',
+                100: 'var(--brand-100)',
+                200: 'var(--brand-200)',
+                400: 'var(--brand-400)',
+                500: 'var(--brand-500)',
+                600: 'var(--brand-600)',
+                700: 'var(--brand-700)',
+              }
             }
           }
         }
@@ -19,6 +31,16 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* 默认紫色主题变量 */
+            --brand-50: #faf5ff;
+            --brand-100: #f3e8ff;
+            --brand-200: #e9d5ff;
+            --brand-400: #c084fc;
+            --brand-500: #a855f7;
+            --brand-600: #9333ea;
+            --brand-700: #7e22ce;
+        }
         body {
             font-family: 'Inter', sans-serif;
             transition: background-color 0.5s ease, color 0.5s ease;
