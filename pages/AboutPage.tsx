@@ -5,7 +5,6 @@ import { SKILLS } from '../constants';
 const AboutPage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-      {/* 头部区 - 移除廉价感，增加质感 */}
       <div className="text-center mb-20">
         <div className="inline-block relative mb-8">
           <div className="w-44 h-44 rounded-[2.5rem] rotate-12 bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-1.5 shadow-2xl shadow-purple-500/20">
@@ -21,7 +20,7 @@ const AboutPage: React.FC = () => {
           关于 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500">YIN-X</span>
         </h1>
         <p className="text-slate-500 dark:text-slate-400 text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-          10年代码征程 · AI 工作流先行者 · 数字化转型专家
+          实用工具 · 有趣资源 · 收藏夹
         </p>
       </div>
 
@@ -33,17 +32,11 @@ const AboutPage: React.FC = () => {
           </div>
           <div className="flex items-center gap-5 mb-8">
             <div className="w-14 h-14 bg-purple-50 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center text-3xl shadow-inner transition-colors">🚀</div>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white transition-colors">核心愿景</h2>
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white transition-colors">YIN-X</h2>
           </div>
           <div className="space-y-6 text-slate-600 dark:text-slate-300 leading-relaxed text-lg transition-colors">
             <p className="font-medium">
-              在技术日新月异的今天，<span className="text-purple-600 dark:text-purple-400 font-bold">效率</span>不再是单纯的工具选择，而是一种思维方式。
-            </p>
-            <p>
-              作为一名深耕行业 10 年的开发者，我目睹了无数团队被重复性劳动拖累。YIN-X 的诞生，就是为了打破这种桎梏。
-            </p>
-            <p>
-              我们不仅评测工具，更在构建一种 <span className="underline decoration-pink-500/30 underline-offset-4">AI 协同开发</span> 的新范式。通过精准的 Prompt 与自动化的流程，让每一位开发者都能发挥 10 倍效能。
+              并没有，<span className="text-purple-600 dark:text-purple-400 font-bold">什么</span>很特别的
             </p>
           </div>
         </section>
@@ -52,7 +45,7 @@ const AboutPage: React.FC = () => {
         <section className="bg-slate-50/50 dark:bg-slate-900/20 border border-dashed border-slate-300 dark:border-slate-800 rounded-[2.5rem] p-10 transition-all">
           <div className="flex items-center gap-5 mb-10">
             <div className="w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center text-3xl shadow-inner transition-colors">💎</div>
-            <h2 className="text-3xl font-black text-slate-900 dark:text-white transition-colors">技术栈</h2>
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white transition-colors">标签</h2>
           </div>
           <div className="flex flex-wrap gap-4">
             {SKILLS.map(skill => (
@@ -66,27 +59,23 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 联络卡片 - 彻底重修 */}
+        {/* 交流群组 */}
         <section className="bg-slate-900 dark:bg-slate-800/50 rounded-[3rem] p-10 md:p-14 overflow-hidden relative shadow-2xl">
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/20 blur-[100px] -mr-48 -mt-48"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-14">
             <div className="flex-1 text-center md:text-left">
-              <h2 className="text-4xl font-black text-white mb-6">保持连接</h2>
+              <h2 className="text-4xl font-black text-white mb-6">交流群组</h2>
               <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-                无论是 AI 工具开发咨询，还是技术深度合作，随时欢迎通过以下方式与我取得联系。
+                交流群组，很多好东东
               </p>
               <div className="space-y-6">
                 <div className="flex items-center gap-4 text-white group cursor-pointer">
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-purple-600 transition-colors">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  </div>
-                  <span className="text-lg font-bold">contact@yin-x.com</span>
-                </div>
-                <div className="flex items-center gap-4 text-white group cursor-pointer">
                   <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-green-600 transition-colors">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+</svg>
                   </div>
-                  <span className="text-lg font-bold">微信：yinx_studio</span>
+                  <span className="text-lg font-bold">###</span>
                 </div>
               </div>
             </div>
