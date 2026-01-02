@@ -48,6 +48,50 @@ export const TOOLS: Tool[] = [
 
 export const ARTICLES: Article[] = [
   {
+    id: 'guide',
+    title: 'YIN-X 站点维护与内容更新指南',
+    excerpt: '本教程将指导你如何手动在代码中添加工具分类、更新文章内容以及使用置顶功能。',
+    content: `## 1. 如何添加工具分类
+在 \`constants.ts\` 的 \`CATEGORIES\` 数组中添加一个对象：
+- \`id\`: 唯一标识符（如 'ai'）
+- \`name\`: 显示的名称（如 '人工智能'）
+- \`icon\`: 一个 Emoji 图标
+
+## 2. 如何在分类下添加工具卡片
+在 \`TOOLS\` 数组中新增对象，关键是 \`category\` 字段必须与分类的 \`id\` 一致：
+\`\`\`ts
+{
+  id: 'unique-id',
+  title: '工具名称',
+  category: 'efficiency', // 对应分类 ID
+  isPinned: true, // 设置为 true 即可置顶
+  ...
+}
+\`\`\`
+
+## 3. 如何管理文章分类
+文章分类采用的是**动态感应机制**。你不需要在别处预定义分类，只需在 \`ARTICLES\` 数组的新文章中直接写 \`category: "新分类名称"\`，系统会自动在列表页顶部生成对应的过滤按钮。
+
+## 4. 如何添加新文章
+在 \`ARTICLES\` 数组中添加新成员：
+- \`content\`: 支持简单的类 Markdown 语法。
+- \`## \`: 二级标题（带紫色装饰条）。
+- \`### \`: 三级标题。
+- \`- \`: 无序列表。
+- \`**文字**\`: 加粗。
+- \`[文字](链接)\`: 插入超链接。
+
+## 5. 如何实现“置顶”功能
+无论是工具还是文章，只要在对象属性中加入 \`isPinned: true\`，该项就会：
+1. 自动排列在列表的最顶端。
+2. 获得专属的 "Pinned" 勋章视觉效果。`,
+    date: '2024-10-25',
+    category: '系统教程',
+    tags: ['维护', '指南', '配置'],
+    link: '#article/guide',
+    isPinned: true
+  },
+  {
     id: '1',
     title: '如何利用 AI 提升 10 倍开发效率',
     excerpt: '在 AI 时代，开发者的角色正在发生深刻变化。本文将探讨如何将 Cursor、Copilot 等工具融入日常工作流。',
@@ -56,7 +100,7 @@ export const ARTICLES: Article[] = [
     category: 'AI 实践',
     tags: ['AI', 'Cursor', '开发效率'],
     link: '#article/1',
-    isPinned: true
+    isPinned: false
   },
   {
     id: '2',
@@ -77,26 +121,6 @@ export const ARTICLES: Article[] = [
     category: '效率提升',
     tags: ['效率', '工作流', 'Notion'],
     link: '#article/3'
-  },
-  {
-    id: '4',
-    title: '深度工作：夺回你的专注力',
-    excerpt: '为什么你总是感到忙碌却无所作为？探索深度工作背后的生理与心理学基础。',
-    content: `## 专注的力量\n\n在各种通知弹窗的干扰下，保持专注已成为一种奢侈。`,
-    date: '2024-07-22',
-    category: '认知升级',
-    tags: ['心理学', '专注', '效率'],
-    link: '#article/4'
-  },
-  {
-    id: '5',
-    title: '2025 年设计审美趋势预判',
-    excerpt: '从扁平化到拟态，再到现在的 Bento Grid 与极简主义，审美是如何轮回的？',
-    content: `## 设计的未来\n\n随着屏显技术的进步，我们将看到更多微动效和复杂光影在 Web 端应用。`,
-    date: '2024-06-05',
-    category: '设计趋势',
-    tags: ['设计', 'UI/UX', '审美'],
-    link: '#article/5'
   },
   {
     id: '6',
