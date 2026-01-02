@@ -35,12 +35,12 @@ const App: React.FC = () => {
   };
 
   const renderPage = () => {
+    // Basic routing logic based on URL hash
     switch (currentPath) {
       case '/':
       case '/tools':
         return <ToolsPage />;
       case '/articles':
-        // Added routing for the Articles page
         return <ArticlesPage />;
       case '/about':
         return <AboutPage />;

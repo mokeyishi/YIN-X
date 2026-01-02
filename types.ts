@@ -22,7 +22,9 @@ export interface NavItem {
   isButton?: boolean;
 }
 
-// Added Article interface to match usage in ArticlesPage.tsx
+/**
+ * Interface representing a blog article
+ */
 export interface Article {
   id: string;
   title: string;

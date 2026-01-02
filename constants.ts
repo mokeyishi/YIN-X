@@ -73,29 +73,31 @@ export const TOOLS: Tool[] = [
   }
 ];
 
-// Added ARTICLES export to fix the module error in ArticlesPage.tsx
+/**
+ * Collection of featured articles
+ */
 export const ARTICLES: Article[] = [
   {
     id: '1',
-    title: '如何利用 AI 工具提升 10 倍开发效率',
-    excerpt: '在这个 AI 爆发的时代，掌握正确的 AI 工具使用方法比单纯学习编程语言更重要。本文将分享我如何在日常工作中使用 Cursor 和 Claude...',
-    category: 'AI 实践',
-    date: '2024-03-20',
+    title: '如何利用 AI 提升 10 倍开发效率',
+    excerpt: '深入探讨 Cursor 与 GitHub Copilot 在实际项目中的高级应用技巧，从 Prompt Engineering 到代码自动重构。',
+    category: '技术干货',
+    date: '2024-03-25',
     link: '#'
   },
   {
     id: '2',
-    title: '2024 年前端开发者必备工具清单',
-    excerpt: '从编辑器插件到在线调试工具，精选 10 款能显著提升前端开发体验的神器，助你告别加班。',
-    category: '工具推荐',
-    date: '2024-03-15',
+    title: '打造极致简约的个人工作流',
+    excerpt: '分享一套基于 Notion + Raycast + Obsidian 的数字化办公方案，让你的专注力回归核心任务。',
+    category: '效率思维',
+    date: '2024-03-18',
     link: '#'
   },
   {
     id: '3',
-    title: '深入浅出：我的提示词工程（Prompt Engineering）心得',
-    excerpt: '写好提示词是一门艺术。通过结构化的指令、少样本提示和思维链技术，你可以让 LLM 变得异常聪明。',
-    category: '技术心得',
+    title: 'React 19 新特性前瞻与实战',
+    excerpt: '解析 React 19 带来的编译器优化、Actions API 以及更强大的服务端组件支持。',
+    category: '前端技术',
     date: '2024-03-10',
     link: '#'
   }
@@ -103,7 +105,6 @@ export const ARTICLES: Article[] = [
 
 export const NAV_ITEMS: NavItem[] = [
   { label: '首页', path: '/' },
-  // Added Articles path to navigation
   { label: '精选文章', path: '/articles' },
   { label: '关于我', path: '/about' },
 ];
