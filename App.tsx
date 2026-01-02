@@ -35,6 +35,7 @@ const App: React.FC = () => {
   });
 
   const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const theme = THEME_COLORS.find(t => t.id === activeThemeId) || THEME_COLORS[0];
@@ -52,7 +53,12 @@ const App: React.FC = () => {
       window.scrollTo(0, 0); 
     };
 
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
     window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('scroll', handleScroll);
 
     if (isDark) {
       document.documentElement.classList.add('dark');
@@ -62,13 +68,20 @@ const App: React.FC = () => {
       localStorage.setItem('theme', 'light');
     }
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [isDark]);
 
   const toggleTheme = () => setIsDark(!isDark);
 
   const navigate = (path: string) => {
     window.location.hash = path;
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const renderPage = () => {
@@ -92,9 +105,23 @@ const App: React.FC = () => {
         {renderPage()}
       </main>
 
-      {/* 右下角悬浮控制台 - 更加紧凑的垂直排列 */}
+      {/* 右下角悬浮控制台 */}
       <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end gap-1.5">
         
+        {/* 回到顶部按钮 - 新增 */}
+        <button 
+          onClick={scrollToTop}
+          className={`w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 active:scale-95 shadow-lg
+            ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}
+            bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-purple-500/50 hover:text-purple-600 dark:hover:text-purple-400
+          `}
+          title="回到顶部"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+
         {/* 调色盘区域 */}
         <div className="flex items-center gap-2">
           {/* 颜色选择器展开菜单 */}
