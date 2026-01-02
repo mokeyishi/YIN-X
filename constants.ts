@@ -73,23 +73,23 @@ export const TOOLS: Tool[] = [
   }
 ];
 
-// Added ARTICLES array to fix missing export error in ArticlesPage.tsx
+/* Export ARTICLES to fix import error in ArticlesPage.tsx */
 export const ARTICLES: Article[] = [
   {
     id: '1',
-    title: '我是如何利用 AI 让开发效率提升 10 倍的',
-    excerpt: '在这个 AI 爆发的时代，开发者该如何保持核心竞争力？分享我日常工作中的 AI 工作流与实战技巧。',
-    category: 'AI 经验',
-    date: '2024-10-15',
-    link: 'https://example.com/article/ai-workflow'
+    title: '2024 AI 开发工具生存指南',
+    excerpt: '深度评测 Cursor, Copilot 与 Claude 在实际项目中的表现，助你构建高效的 AI 工作流。',
+    date: '2024-03-20',
+    category: 'AI 开发',
+    link: '#'
   },
   {
     id: '2',
-    title: '从零开始：构建你的个人高效数字化工具库',
-    excerpt: '好的工具不仅能提高效率，更能改变工作习惯。为你精选 20 个不容错过的生产力工具。',
-    category: '工具推荐',
-    date: '2024-09-28',
-    link: 'https://example.com/article/tools-library'
+    title: '从零开始构建数字化办公系统',
+    excerpt: '分享如何利用低代码工具与自动化流程，为中小企业打造量身定制的数字化转型方案。',
+    date: '2024-03-15',
+    category: '数字化转型',
+    link: '#'
   }
 ];
 

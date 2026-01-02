@@ -22,12 +22,12 @@ export interface NavItem {
   isButton?: boolean;
 }
 
-// Added Article interface to fix import error in ArticlesPage.tsx
+/* Interface for the Article type used in ArticlesPage */
 export interface Article {
   id: string;
   title: string;
   excerpt: string;
-  category: string;
   date: string;
+  category: string;
   link: string;
 }
