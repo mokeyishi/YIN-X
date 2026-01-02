@@ -1,4 +1,3 @@
-
 export interface Tool {
   id: string;
   title: string;
@@ -22,14 +21,11 @@ export interface NavItem {
   isButton?: boolean;
 }
 
-/**
- * Interface representing a blog article
- */
 export interface Article {
   id: string;
   title: string;
   excerpt: string;
-  category: string;
   date: string;
+  category: string;
   link: string;
 }

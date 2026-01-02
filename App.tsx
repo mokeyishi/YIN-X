@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import ToolsPage from './pages/ToolsPage';
@@ -35,7 +34,6 @@ const App: React.FC = () => {
   };
 
   const renderPage = () => {
-    // Basic routing logic based on URL hash
     switch (currentPath) {
       case '/':
       case '/tools':

@@ -1,4 +1,3 @@
-
 import { Tool, Category, NavItem, Article } from './types';
 
 export const CATEGORIES: Category[] = [
@@ -73,32 +72,29 @@ export const TOOLS: Tool[] = [
   }
 ];
 
-/**
- * Collection of featured articles
- */
 export const ARTICLES: Article[] = [
   {
     id: '1',
     title: '如何利用 AI 提升 10 倍开发效率',
-    excerpt: '深入探讨 Cursor 与 GitHub Copilot 在实际项目中的高级应用技巧，从 Prompt Engineering 到代码自动重构。',
-    category: '技术干货',
-    date: '2024-03-25',
+    excerpt: '在 AI 时代，开发者的角色正在发生深刻变化。本文将探讨如何将 Cursor、Copilot 等工具融入日常工作流。',
+    date: '2024-10-20',
+    category: 'AI 实践',
     link: '#'
   },
   {
     id: '2',
-    title: '打造极致简约的个人工作流',
-    excerpt: '分享一套基于 Notion + Raycast + Obsidian 的数字化办公方案，让你的专注力回归核心任务。',
-    category: '效率思维',
-    date: '2024-03-18',
+    title: '2024 年前端技术趋势观察',
+    excerpt: '从 React 19 到服务端组件，前端生态正经历新一轮洗牌。我们需要关注哪些核心技术？',
+    date: '2024-09-15',
+    category: '技术趋势',
     link: '#'
   },
   {
     id: '3',
-    title: 'React 19 新特性前瞻与实战',
-    excerpt: '解析 React 19 带来的编译器优化、Actions API 以及更强大的服务端组件支持。',
-    category: '前端技术',
-    date: '2024-03-10',
+    title: '高效工作流：Prompt Engineering 实战',
+    excerpt: '掌握如何编写高质量的提示词，是与 AI 协作的核心能力。',
+    date: '2024-08-01',
+    category: '提示词工程',
     link: '#'
   }
 ];
