@@ -2,11 +2,11 @@ import { Tool, Category, NavItem, Article } from './types';
 
 export const CATEGORIES: Category[] = [
   { id: 'all', name: '全部工具', icon: '🎡' },
-  { id: 'docs', name: '文档处理', icon: '📝' },
-  { id: 'efficiency', name: '效率工具', icon: '⚡' },
-  { id: 'dev', name: '开发辅助', icon: '🛠️' },
-  { id: 'image', name: '图像处理', icon: '🎨' },
-  { id: 'learning', name: '学习资源', icon: '🎓' },
+  { id: 'docs', name: '字幕编辑', icon: '📝' },
+  { id: 'efficiency', name: '影音剪辑', icon: '⚡' },
+  { id: 'dev', name: 'PT站点', icon: '🛠️' },
+  { id: 'image', name: '有趣站点', icon: '🎨' },
+  { id: 'learning', name: '其它工具', icon: '🎓' },
 ];
 
 export const TOOLS: Tool[] = [
