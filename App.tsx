@@ -40,6 +40,7 @@ const App: React.FC = () => {
       case '/tools':
         return <ToolsPage />;
       case '/articles':
+        // Added routing for the Articles page
         return <ArticlesPage />;
       case '/about':
         return <AboutPage />;
@@ -59,7 +60,6 @@ const App: React.FC = () => {
         {renderPage()}
       </main>
 
-      {/* 极简、超清晰的高质感主题切换按钮 */}
       <button 
         onClick={toggleTheme}
         className={`fixed bottom-10 right-10 z-[100] w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-300 active:scale-95 group shadow-lg
