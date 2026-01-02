@@ -17,9 +17,9 @@ export const TOOLS: Tool[] = [
     category: 'docs',
     icon: '📱',
     bannerColor: 'bg-purple-500/10 dark:bg-purple-600',
-    tags: ['开源', '强大'],
+    tags: ['开源', '强大', 'WIN'],
     link: 'https://github.com/SubtitleEdit/subtitleedit/releases',
-    poster: 'https://github.com/zpen1992/YIN-X/blob/main/img/IMAGES-1.png',
+    poster: 'https://raw.githubusercontent.com/zpen1992/YIN-X/main/img/IMAGES-1.png',
     isPinned: true
   },
   {
