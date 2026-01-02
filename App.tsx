@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import ToolsPage from './pages/ToolsPage';
@@ -5,18 +6,18 @@ import AboutPage from './pages/AboutPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
 
-// 定义 10 种高度独特的色系，确保视觉差异化
+// 定义 10 种视觉高度差异化的色系
 const THEME_COLORS = [
-  { name: '经典紫', id: 'purple', hex: '#9333ea', shades: { 50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff', 400: '#c084fc', 500: '#a855f7', 600: '#9333ea', 700: '#7e22ce' } },
-  { name: '宝石绿', id: 'emerald', hex: '#10b981', shades: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857' } },
-  { name: '深海蓝', id: 'blue', hex: '#3b82f6', shades: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' } },
-  { name: '火烈粉', id: 'pink', hex: '#ec4899', shades: { 50: '#fdf2f8', 100: '#fce7f3', 200: '#fbcfe8', 400: '#f472b6', 500: '#ec4899', 600: '#db2777', 700: '#be185d' } },
-  { name: '日落橙', id: 'orange', hex: '#f97316', shades: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } },
-  { name: '靛青蓝', id: 'indigo', hex: '#6366f1', shades: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' } },
+  { name: '魅力紫', id: 'purple', hex: '#9333ea', shades: { 50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff', 400: '#c084fc', 500: '#a855f7', 600: '#9333ea', 700: '#7e22ce' } },
+  { name: '极光绿', id: 'emerald', hex: '#10b981', shades: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857' } },
+  { name: '电光蓝', id: 'blue', hex: '#3b82f6', shades: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' } },
+  { name: '芭比粉', id: 'pink', hex: '#db2777', shades: { 50: '#fdf2f8', 100: '#fce7f3', 200: '#fbcfe8', 400: '#f472b6', 500: '#ec4899', 600: '#db2777', 700: '#be185d' } },
+  { name: '活力橙', id: 'orange', hex: '#ea580c', shades: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' } },
+  { name: '暗影靛', id: 'indigo', hex: '#4f46e5', shades: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' } },
   { name: '柠檬黄', id: 'lime', hex: '#84cc16', shades: { 50: '#f7fee7', 100: '#ecfccb', 200: '#d9f99d', 400: '#a3e635', 500: '#84cc16', 600: '#65a30d', 700: '#4d7c0f' } },
-  { name: '璀璨金', id: 'amber', hex: '#f59e0b', shades: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309' } },
-  { name: '清新青', id: 'cyan', hex: '#06b6d4', shades: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490' } },
-  { name: '酷灰蓝', id: 'slate', hex: '#475569', shades: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155' } },
+  { name: '赤炎红', id: 'red', hex: '#e11d48', shades: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c' } },
+  { name: '冰晶青', id: 'cyan', hex: '#0891b2', shades: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490' } },
+  { name: '太空灰', id: 'slate', hex: '#475569', shades: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155' } },
 ];
 
 const App: React.FC = () => {
@@ -91,13 +92,13 @@ const App: React.FC = () => {
         {renderPage()}
       </main>
 
-      {/* 右下角悬浮控制台 - 垂直排列，间距缩小为 gap-2 */}
-      <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end gap-2.5">
+      {/* 右下角悬浮控制台 - 更加紧凑的垂直排列 */}
+      <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end gap-1.5">
         
         {/* 调色盘区域 */}
-        <div className="flex items-center gap-3">
-          {/* 颜色选择器展开菜单 - 10色分两行排列 */}
-          <div className={`grid grid-cols-5 gap-2.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 transition-all duration-500 shadow-2xl ${
+        <div className="flex items-center gap-2">
+          {/* 颜色选择器展开菜单 */}
+          <div className={`grid grid-cols-5 gap-2.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl p-4 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 transition-all duration-500 shadow-2xl ${
             isColorPickerOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'
           }`}>
             {THEME_COLORS.map(theme => (
@@ -108,7 +109,7 @@ const App: React.FC = () => {
                   setIsColorPickerOpen(false);
                 }}
                 title={theme.name}
-                className={`w-7 h-7 rounded-full border-2 transition-all hover:scale-125 active:scale-90 shadow-sm ${
+                className={`w-7 h-7 rounded-full border-2 transition-all hover:scale-125 active:scale-90 ${
                   activeThemeId === theme.id ? 'border-white ring-2 ring-purple-500 scale-110' : 'border-transparent opacity-85 hover:opacity-100'
                 }`}
                 style={{ backgroundColor: theme.hex }}
@@ -131,7 +132,7 @@ const App: React.FC = () => {
           </button>
         </div>
 
-        {/* 夜间模式切换按钮 - 紧贴上方按钮 */}
+        {/* 夜间模式切换按钮 */}
         <button 
           onClick={toggleTheme}
           className={`w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-300 active:scale-95 group shadow-lg

@@ -1,4 +1,3 @@
-
 import { Tool, Category, NavItem, Article } from './types';
 
 export const CATEGORIES: Category[] = [
@@ -48,89 +47,102 @@ export const TOOLS: Tool[] = [
 
 export const ARTICLES: Article[] = [
   {
+    id: 'poster-guide',
+    title: '导航海报规格与设计最佳实践',
+    excerpt: '如何为你的工具导航站选择最合适的海报尺寸？本文分享 16:9 比例下的视觉优化建议与性能标准。',
+    content: `## 1. 为什么选择 16:9 比例？
+在 UI/UX 设计中，16:9 (1.77:1) 是目前最通用的长宽比。
+- **视觉平衡**：它能提供足够的横向空间展示工具特性。
+- **多端适配**：在移动端和桌面端的三栏布局中，16:9 都能保持极佳的缩放效果。
+- **裁剪最小**：由于代码中使用了 \`object-cover\`，使用 16:9 比例的素材可以最大程度保留原始构图。
+
+## 2. 推荐分辨率标准
+为了兼顾清晰度与加载速度，建议采用以下像素规格：
+- **标准规格**：\`800 x 450 px\`（推荐，平衡性最好）
+- **高清规格**：\`1200 x 675 px\`（适用于视网膜屏展示）
+- **极简规格**：\`640 x 360 px\`（用于缩略图展示）
+
+## 3. 性能优化建议
+- **文件格式**：首选 **WebP**，其次是 JPG。避免使用 PNG（体积过大）。
+- **文件大小**：单张海报务必控制在 **100KB 以内**，以防页面滚动卡顿。
+- **压缩工具**：推荐使用 TinyPNG 或 Squoosh 进行二次压缩。
+
+## 4. 视觉构图技巧
+由于 UI 界面会在图片上方叠加置顶勋章和分类标签，设计时请遵循以下原则：
+1. **核心避让**：将工具 Logo 或核心元素放在画面**中心略微偏右下**的位置。
+2. **渐变暗角**：如果背景颜色较浅，可以手动在海报底部添加 20% 的暗影，确保白色文字清晰。
+3. **色调统一**：尽量选择与站点当前主题色（如紫色、蓝色）相近的色调，提升整体质感。`,
+    date: '2024-11-20',
+    category: '设计规范',
+    tags: ['海报', '尺寸', '优化'],
+    link: '#article/poster-guide',
+    isPinned: true
+  },
+  {
     id: 'guide',
     title: 'YIN-X 站点维护与内容更新指南',
     excerpt: '本教程将指导你如何手动在代码中添加工具分类、更新文章内容以及使用置顶功能。',
-    content: `## 1. 如何添加工具分类
-在 \`constants.ts\` 的 \`CATEGORIES\` 数组中添加一个对象：
-- \`id\`: 唯一标识符（如 'ai'）
-- \`name\`: 显示的名称（如 '人工智能'）
-- \`icon\`: 一个 Emoji 图标
-
-## 2. 如何在分类下添加工具卡片
-在 \`TOOLS\` 数组中新增对象，关键是 \`category\` 字段必须与分类的 \`id\` 一致：
-\`\`\`ts
-{
-  id: 'unique-id',
-  title: '工具名称',
-  category: 'efficiency', // 对应分类 ID
-  isPinned: true, // 设置为 true 即可置顶
-  ...
-}
-\`\`\`
-
-## 3. 如何管理文章分类
-文章分类采用的是**动态感应机制**。你不需要在别处预定义分类，只需在 \`ARTICLES\` 数组的新文章中直接写 \`category: "新分类名称"\`，系统会自动在列表页顶部生成对应的过滤按钮。
-
-## 4. 如何添加新文章
-在 \`ARTICLES\` 数组中添加新成员：
-- \`content\`: 支持简单的类 Markdown 语法。
-- \`## \`: 二级标题（带紫色装饰条）。
-- \`### \`: 三级标题。
-- \`- \`: 无序列表。
-- \`**文字**\`: 加粗。
-- \`[文字](链接)\`: 插入超链接。
-
-## 5. 如何实现“置顶”功能
-无论是工具还是文章，只要在对象属性中加入 \`isPinned: true\`，该项就会：
-1. 自动排列在列表的最顶端。
-2. 获得专属的 "Pinned" 勋章视觉效果。`,
+    content: `## 1. 如何添加工具分类\n在 \`constants.ts\` 的 \`CATEGORIES\` 数组中添加一个对象。\n\n## 2. 如何在分类下添加工具卡片\n在 \`TOOLS\` 数组中新增对象，关键是 \`category\` 字段必须与分类的 \`id\` 一致。`,
     date: '2024-10-25',
     category: '系统教程',
     tags: ['维护', '指南', '配置'],
     link: '#article/guide',
-    isPinned: true
-  },
-  {
-    id: '1',
-    title: '如何利用 AI 提升 10 倍开发效率',
-    excerpt: '在 AI 时代，开发者的角色正在发生深刻变化。本文将探讨如何将 Cursor、Copilot 等工具融入日常工作流。',
-    content: `## 为什么 AI 是开发者的必修课\n\n在过去的一年里，大语言模型（LLM）彻底改变了编写代码的方式。\n\n### 核心技巧：\n1. **提示词工程 (Prompt Engineering)**\n2. **原子化提交**\n3. **代码审查**`,
-    date: '2024-10-20',
-    category: 'AI 实践',
-    tags: ['AI', 'Cursor', '开发效率'],
-    link: '#article/1',
     isPinned: false
   },
   {
-    id: '2',
-    title: '2024 年前端技术趋势观察',
-    excerpt: '从 React 19 到服务端组件，前端生态正经历新一轮洗牌。我们需要关注哪些核心技术？',
-    content: `## 前端开发的下一站\n\nReact 19 的发布带来了很多令人兴奋的特性。`,
-    date: '2024-09-15',
-    category: '技术趋势',
-    tags: ['React', '前端', '2024'],
-    link: '#article/2'
+    id: 'ai-efficiency',
+    title: '2025年 AI 工具集成工作流建议',
+    excerpt: '如何将 Cursor、ChatGPT 4o 以及本地 Llama 3 整合进日常工作流程中？',
+    content: `## AI 时代的工作流重塑\n\n当前的 AI 工具已经不仅仅是助手，而是可以深度参与决策的准成员。我们建议将工作流分为：**探索性对话、辅助式编码、自动化测试**三个核心阶段。`,
+    date: '2024-11-15',
+    category: 'AI 实践',
+    tags: ['AI', 'Workflow', 'Efficiency'],
+    link: '#article/ai-efficiency',
+    isPinned: false
   },
   {
-    id: '3',
-    title: '数字化转型的个人实践：从碎片到系统',
-    excerpt: '在这个信息爆炸的时代，如何通过工具构建个人知识库？本文分享我的数字化工作流。',
-    content: `## 信息获取与沉淀\n\n建立一个高效的工作流，第一步是过滤信息。`,
-    date: '2024-08-10',
-    category: '效率提升',
-    tags: ['效率', '工作流', 'Notion'],
-    link: '#article/3'
+    id: 'clean-code',
+    title: '现代化 React 组件编写准则',
+    excerpt: '拒绝面条代码：如何利用 TypeScript 和 Hooks 编写可维护的 UI 组件。',
+    content: `## 核心原则\n\n1. **关注点分离**：逻辑与视图解耦。\n2. **原子化设计**：组件粒度控制在可复用的最小单元。\n3. **强类型保护**：利用 TS 接口定义严格的 Props 约束。`,
+    date: '2024-11-05',
+    category: '开发笔记',
+    tags: ['React', 'TS', 'Code Quality'],
+    link: '#article/clean-code',
+    isPinned: false
   },
   {
-    id: '6',
-    title: '测试分页：这是第 6 篇文章',
-    excerpt: '当你看到这篇文章时，说明分页功能已经生效，它应该出现在第二页。',
-    content: `## 分页测试内容\n\n为了演示“超过 5 篇自动分页”，我们添加了这篇测试文章。`,
-    date: '2024-05-10',
-    category: '系统测试',
-    tags: ['分页', '测试'],
-    link: '#article/6'
+    id: 'remote-culture',
+    title: '远程办公下的团队异步协作',
+    excerpt: '打破时区障碍：为什么文档化驱动比实时会议更高效。',
+    content: `## 异步协作的精髓\n\n远程团队最大的挑战不是沟通工具，而是沟通习惯。通过**任务看板+深度文档**，我们可以减少 70% 无效的 Zoom 会议。`,
+    date: '2024-10-30',
+    category: '效率研究',
+    tags: ['远程', '协作', '异步'],
+    link: '#article/remote-work',
+    isPinned: false
+  },
+  {
+    id: 'typography-web',
+    title: 'Web 字体的性能与美学平衡',
+    excerpt: '如何选择支持中文阅读且不影响 LCP 指标的 Web 字体方案。',
+    content: `## 字体优化的三板斧\n\n1. **子集化压缩**：只提取常用字符。\n2. **font-display: swap**：保证首屏文字快速出现。\n3. **系统字体回退**：提供最稳妥的阅读体验。`,
+    date: '2024-10-15',
+    category: '设计规范',
+    tags: ['字体', '性能', 'CSS'],
+    link: '#article/typography',
+    isPinned: false
+  },
+  {
+    id: 'minimalist-tools',
+    title: '为什么我推崇“极简工具主义”',
+    excerpt: '工具越多效率越低？探讨如何精简你的工具箱，找回专注力。',
+    content: `## 极简的力量\n\n当你的电脑里装了 3 个笔记软件、4 个待办应用时，你的大脑已经分心了。真正的效率高手往往只需要一个好用的 Markdown 编辑器。`,
+    date: '2024-09-28',
+    category: '效率研究',
+    tags: ['极简', '专注', '工具'],
+    link: '#article/minimalist',
+    isPinned: false
   }
 ];
 
