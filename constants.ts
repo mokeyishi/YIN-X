@@ -12,14 +12,14 @@ export const CATEGORIES: Category[] = [
 export const TOOLS: Tool[] = [
   {
     id: '1',
-    title: 'iPhone 照片格式转换器',
-    description: '完全免费的在线 HEIC 转 JPG 工具。支持高速批量转换为 JPG/PNG/WebP 格式。',
-    category: 'image',
+    title: 'Subtitle Edit',
+    description: '它是字幕制作界的“瑞士军刀”，功能全面到近乎全能且完全免费。',
+    category: 'docs',
     icon: '📱',
     bannerColor: 'bg-purple-500/10 dark:bg-purple-600',
-    tags: ['开源', '批量', '无损'],
-    link: 'https://example.com/heic',
-    poster: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800',
+    tags: ['开源', '强大'],
+    link: 'https://github.com/SubtitleEdit/subtitleedit/releases',
+    poster: 'https://github.com/zpen1992/YIN-X/blob/main/img/IMAGES-1.png',
     isPinned: true
   },
   {
