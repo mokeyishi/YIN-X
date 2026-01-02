@@ -1,7 +1,7 @@
 import { Tool, Category, NavItem, Article } from './types';
 
 export const CATEGORIES: Category[] = [
-  { id: 'all', name: '全部工具集', icon: '🎡' },
+  { id: 'all', name: '全部工具', icon: '🎡' },
   { id: 'docs', name: '文档处理', icon: '📝' },
   { id: 'efficiency', name: '效率工具', icon: '⚡' },
   { id: 'dev', name: '开发辅助', icon: '🛠️' },
