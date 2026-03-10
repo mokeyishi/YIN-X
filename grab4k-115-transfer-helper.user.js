@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Grab4K 115 一键转存助手（增强版）
-// @version      5.5.0
+// @version      5.5.1
 // @description  在 Grab4K 内容页为 115 资源提供一键/批量转存与列表选择转存，支持自动定位到资源区
 // @author       楠 (adapted for Grab4K, enhanced by Codex)
 // @match        *://grab4k.com/*
@@ -40,6 +40,32 @@
   if (!/\/down\//.test(location.pathname)) return;
 
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  function triggerRealClick(el) {
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const clientX = rect.left + Math.min(Math.max(rect.width / 2, 1), Math.max(rect.width - 1, 1));
+    const clientY = rect.top + Math.min(Math.max(rect.height / 2, 1), Math.max(rect.height - 1, 1));
+    const baseEvent = {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      view: window,
+      button: 0,
+      buttons: 1,
+      clientX,
+      clientY,
+      screenX: window.screenX + clientX,
+      screenY: window.screenY + clientY,
+    };
+
+    ['pointerover', 'pointerenter', 'mouseover', 'mouseenter', 'pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click']
+      .forEach(type => {
+        const EventCtor = type.startsWith('pointer') && typeof PointerEvent === 'function' ? PointerEvent : MouseEvent;
+        el.dispatchEvent(new EventCtor(type, baseEvent));
+      });
+  }
 
   const Utils = {
     parse115Link(text) {
@@ -245,7 +271,7 @@
       // ignore clipboard clear failure
     }
 
-    copyBtn.click();
+    triggerRealClick(copyBtn);
 
     const deadline = Date.now() + CONFIG.clipMaxWait;
     let parsed = null;
