@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Grab4K 115网盘单资源自动点击 (稳健点击版)
 // @namespace    http://tampermonkey.net/
-// @version      2.2
-// @description  精准识别 115 区域；若仅有单行资源则模拟真实鼠标点击并提供强制跳转兜底。
+// @version      2.3
+// @description  只识别 115网盘链接区域（不扫描磁力链接区域）；若仅有单行资源则模拟真实鼠标点击并提供强制跳转兜底。
 // @author       AI助手
 // @match        *://grab4k.com/*
 // @match        *://www.grab4k.com/*
@@ -89,10 +89,23 @@
     return rect.width > 0 && rect.height > 0;
   }
 
+  function findSectionHeader(keyword) {
+    const visibleNodes = Array.from(document.querySelectorAll('*')).filter(isVisible);
+    return (
+      visibleNodes.find((el) => {
+        const ownText = getOwnText(el);
+        const text = (el.textContent || '').trim();
+        return ownText.includes(keyword) || text.includes(keyword);
+      }) || null
+    );
+  }
+
   function detectAndClickSingle115Row() {
     const allVisible = Array.from(document.querySelectorAll('*')).filter(isVisible);
 
-    let header115 = null;
+    const header115 = findSectionHeader('115网盘链接');
+    const magnetHeader = findSectionHeader('磁力链接');
+
     const otherHeaders = [];
     const rowCandidates = [];
 
@@ -100,8 +113,7 @@
       const text = (el.textContent || '').trim();
       const ownText = getOwnText(el);
 
-      if (!header115 && ownText.includes('115网盘链接') && ownText.length <= 40) {
-        header115 = el;
+      if (text.includes('磁力链接')) {
         continue;
       }
 
@@ -131,7 +143,10 @@
     if (!header115 || rowCandidates.length === 0) return 'WAITING';
 
     const y115 = header115.getBoundingClientRect().top + window.scrollY;
-    let nextY = Number.POSITIVE_INFINITY;
+    let nextY = magnetHeader
+      ? magnetHeader.getBoundingClientRect().top + window.scrollY
+      : Number.POSITIVE_INFINITY;
+
     for (const h of otherHeaders) {
       const hy = h.getBoundingClientRect().top + window.scrollY;
       if (hy > y115 + 8 && hy < nextY) nextY = hy;
